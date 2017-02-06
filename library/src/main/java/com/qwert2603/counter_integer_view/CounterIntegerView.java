@@ -90,6 +90,16 @@ public class CounterIntegerView extends LinearLayout {
         mStableTextView.setText("-");
     }
 
+    public interface TextViewConfigurator {
+        void configure(TextView textView);
+    }
+
+    public void configure(TextViewConfigurator textViewConfigurator) {
+        textViewConfigurator.configure(mStableTextView);
+        textViewConfigurator.configure(mInTextView);
+        textViewConfigurator.configure(mOutTextView);
+    }
+
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
