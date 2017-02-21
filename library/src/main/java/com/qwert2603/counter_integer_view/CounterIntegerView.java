@@ -67,6 +67,7 @@ public class CounterIntegerView extends LinearLayout {
         String e = String.valueOf(mInteger);
 
         if (((oldNumber > 0) != (mInteger > 0)) || (b.length() != e.length())) {
+            mStableTextView.setVisibility(GONE);
             mStableTextView.setText("");
             do_switch(oldNumber, mInteger, String.valueOf(oldNumber), String.valueOf(mInteger));
             return;
@@ -80,6 +81,7 @@ public class CounterIntegerView extends LinearLayout {
             ++s;
         }
 
+        mStableTextView.setVisibility(VISIBLE);
         mStableTextView.setText(e.substring(0, s));
         do_switch(oldNumber, mInteger, b.substring(s, b.length()), e.substring(s, e.length()));
     }
@@ -87,6 +89,7 @@ public class CounterIntegerView extends LinearLayout {
     public void setNothing() {
         mInTextView.setVisibility(GONE);
         mOutTextView.setVisibility(GONE);
+        mStableTextView.setVisibility(VISIBLE);
         mStableTextView.setText("-");
     }
 
@@ -148,6 +151,7 @@ public class CounterIntegerView extends LinearLayout {
         mInteger = integer;
         mInTextView.setVisibility(GONE);
         mOutTextView.setVisibility(GONE);
+        mStableTextView.setVisibility(VISIBLE);
         mStableTextView.setText(String.valueOf(mInteger));
     }
 }
